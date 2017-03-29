@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app"></div>
+	<script src="react-0.14.7/build/react.js"></script>
+	<script src="react-0.14.7/build/react-dom.js"></script>
+	<script src="browser.js"></script>
+	<script type="text/babel">
+		var FormCom = React.createClass({
+			getIntitialState:function(){
+				return{
+					username:'',
+					sex:'',
+					school:'黑大'
+				};
+			},
+			handleChange:function(e){
+				this.setState({
+					username:e.target.value
+				});
+			},
+			handleClick:function(e){
+				var aa ={};
+				aa.username=this.state.username;
+				aa.sex=this.state.sex;
+				aa.school= this.state.school;
+				console.log(aa);
+				e.preventDefault();
+			},
+			handleRadio:function(e){
+				this.setState({
+					sex:e.target.value
+				})
+			},
+			handleSelect:function(e){
+				this.setState({
+					school:e.target.value
+				})
+			},
+			render:function(){
+				return(
+					<form>
+					<p>用户名：<input type="text" name="username" onChange={this.handleChange}/></p>
+					<p>性别：<input type="radio" name="sex" value="男" onChange={this.handleRadio}/>男
+							<input type="radio" name="sex" value="女" onChange={this.handleRadio}/>女
+					</p>
+					<select  onChange={this.handleSelect}>
+						<option value="黑大">黑大</option>
+						<option value="理工">理工</option>
+						<option value="林大">林大</option>
+					</select>
+					<p><input type="submit" name="" value="提交" onClick={this.handleClick}/></p>
+				</form>
+				);	
+			}
+		});
+		ReactDOM.render(
+			<FormCom/>,
+			document.getElementById('app')
+		);
+	</script>
+</body>
+</html>

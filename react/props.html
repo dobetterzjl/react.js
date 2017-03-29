@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="add"></div>
+	<script src="react-0.14.7/build/react.js"></script>
+	<script src="react-0.14.7/build/react-dom.js"></script>
+	<script src="browser.js"></script>
+	<script type="text/babel">
+		var Message = React.createClass({
+				render:function(){
+					var str="gdhjsadjahsd";
+					var num = 123;
+					var arr = [1,2,3];
+					return(
+						<SubMessage dataStr={str} num={num} arr={arr}/>
+					);
+				}
+		});
+		var SubMessage = React.createClass({
+			render:function(){
+				var smg=[];
+				this.props.arr.forEach(function(value,index){
+					smg.push(<div key = {index}>{value}</div>);
+				});
+				return(
+					<div>{smg}</div>
+				)
+			}
+		});
+		ReactDOM.render(
+			<Message/>,
+			document.getElementById('add')
+		);
+	</script>
+</body>
+</html>

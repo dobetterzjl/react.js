@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="add"></div>
+	<script src="react-0.14.7/build/react.js"></script>
+	<script src="react-0.14.7/build/react-dom.js"></script>
+	<script src="browser.js"></script>
+	<script type="text/babel">
+		var Clickadd = React.createClass({
+			getInitialState:function(){
+				return {
+					count:0
+				}
+			},
+			clickHandler:function(){
+				this.setState({
+					count:this.state.count+1
+				});
+			},
+			render:function(){
+				return(
+					<div>
+						<button onClick={this.clickHandler}>点我+1</button>
+						<p>当前值：{this.state.count} </p>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(
+			<Clickadd/>,
+			document.getElementById('add')
+		);
+	</script>
+</body>
+</html>
